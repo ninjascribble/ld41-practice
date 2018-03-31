@@ -1,14 +1,9 @@
 import Gameplay from './Gameplay';
 import Loading from './Loading';
-import Menu from './Menu';
 
 module.exports = {
   loading: function loading (stateManager) {
     changeState(stateManager, Loading);
-  },
-
-  menu: function menu (stateManager) {
-    changeState(stateManager, Menu);
   },
 
   gameplay: function gameplay (stateManager) {
