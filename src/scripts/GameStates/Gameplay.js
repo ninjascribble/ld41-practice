@@ -1,9 +1,9 @@
-import _State from './_State';
-import GameObjects from '../game_objects';
-import DisplayObjects from '../display_objects';
-import Characters from '../characters';
+import GameState from './GameState';
+import GameObjects from '../GameObjects';
+import DisplayObjects from '../DisplayObjects';
+import Characters from '../Characters';
 
-export default class Gameplay extends _State {
+export default class Gameplay extends GameState {
   create () {
     this.stage.backgroundColor = '#223344';
     this.knight = Characters.knight('Horace');

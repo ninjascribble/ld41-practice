@@ -1,8 +1,8 @@
-import _State from './_State';
-import DisplayObjects from '../display_objects';
-import GameObjects from '../game_objects';
+import GameState from './GameState';
+import DisplayObjects from '../DisplayObjects';
+import GameObjects from '../GameObjects';
 
-export default class Loading extends _State {
+export default class Loading extends GameState {
   init () {
     // Pixel-perfect canvas scaling!
     // Thanks to http://www.belenalbeza.com/retro-crisp-pixel-art-in-phaser/

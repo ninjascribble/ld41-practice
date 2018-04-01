@@ -1,4 +1,4 @@
-import DisplayObjects from '../display_objects';
+import DisplayObjects from '../DisplayObjects';
 
 export default class CharacterCard extends Phaser.Group {
   constructor (game, x, y, bkg, character) {

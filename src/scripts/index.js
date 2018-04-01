@@ -1,4 +1,4 @@
-import States from './states';
+import GameStates from './GameStates';
 
 // 2x Gameboy resolution
 const width = 320;
@@ -20,6 +20,6 @@ const game = new Phaser.Game(
   physicsConfig
 );
 
-States.loading(game.state);
+GameStates.loading(game.state);
 
 global.game = game;
