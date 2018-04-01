@@ -11,25 +11,6 @@ export default class Gameplay extends _State {
     this.add.existing(this.wizard);
   }
 
-  titleText () {
-    return DisplayObjects.displayFont(game, 'THIS IS THE GAME', this.world.centerX, 40, 'center');
-  }
-
-  alphabetText () {
-    var text = DisplayObjects.bodyFont(game, `
-AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz
-1,234,567,890 Ti Tj To 77 71 73 91910 .:;,
-!№;%:?*()_+-=.,/|"'@#$^&{}[]`, this.world.centerX, 145, 'center');
-    text.maxWidth = 300;
-    return text;
-  }
-
-  actionText () {
-    var text = DisplayObjects.bodyFont(game, 'Press Spacebar to Play!', this.world.centerX, 190, 'center');
-    this.time.events.loop(400, () => text.visible = !text.visible);
-    return text;
-  }
-
   update () {
   }
 }
