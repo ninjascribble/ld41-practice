@@ -2,6 +2,7 @@ export default class Character {
   constructor(name, attributes = {}) {
     this.name = name;
     this.attributes = attributes;
+    this.commands = [];
     this.enemies = [];
     this.reset();
   }
@@ -27,13 +28,10 @@ export default class Character {
   }
 
   nextAction() {
-    // We'll have to make an Action class at some point, but for now...
     const target = this.enemies[0];
-    const description = `${this.name} is attacking ${target.name}`;
-    const perform = () => {
-      target.takeDamage(123);
-      return `${target.name} took 123 points of damage!`;
-    };
+    const action = this.commands[0].createAction(this, target);
+    const description = action.message;
+    const perform = action.perform;
 
     return { target, description, perform };
   }

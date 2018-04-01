@@ -32,9 +32,11 @@ export default class Gameplay extends GameState {
   }
 
   next() {
-    if (this.wizard.hp <= 0) {
-      console.log(`%c${this.wizard.name} is dead`, 'color:red')
-      console.log(`%c${this.knight.name} wins!`, 'color:goldenrod')
+    if (this.knight.hp <= 0 || this.wizard.hp <= 0) {
+      const loser = this.knight.hp <= 0 ? this.knight : this.wizard;
+      const winner = loser == this.knight ? this.wizard : this.knight;
+      console.log(`%c${loser.name} is dead`, 'color:red')
+      console.log(`%c${winner.name} wins!`, 'color:goldenrod')
       return;
     }
 
