@@ -15,11 +15,20 @@ export default class Gameplay extends GameState {
 
     this.knight.enemies.push(this.wizard);
     this.wizard.enemies.push(this.knight);
-
-    // TODO: build a turn manager so that we know who goes when
+    this.turnManager = this.nextActor();
 
     console.clear();
     this.next();
+  }
+
+  * nextActor() {
+    let actors = [this.knight, this.wizard];
+    let index = Math.floor(Math.random() * 2);
+
+    while(true) {
+      index = index ? 0 : 1;
+      yield actors[index];
+    }
   }
 
   next() {
@@ -29,15 +38,15 @@ export default class Gameplay extends GameState {
       return;
     }
 
-    const actor = this.knight;
-
-    console.log(actor.status());
-
+    const actor = this.turnManager.next().value;
     const action = actor.nextAction();
+
     console.log(action.description);
 
     const result = action.perform();
+
     console.log(result);
+    console.log(action.target.status());
 
     game.time.events.add(1000, () => this.next());
   }

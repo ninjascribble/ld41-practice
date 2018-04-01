@@ -12,17 +12,17 @@ export default class Character {
   }
 
   status() {
-    if (this.hp == this.attributes.hp) {
-      return `${this.name} is at full health`;
-    }
-    else if (this.hp > this.attributes.hp / 2) {
-      return `${this.name} is ok`;
+    if (this.hp < 1) {
+      return `${this.name} is dead`;
     }
     else if (this.hp <= this.attributes.hp / 2) {
       return `${this.name} is hurting`;
     }
-    else if (this.hp < 1) {
-      return `${this.name} is dead`;
+    else if (this.hp > this.attributes.hp / 2) {
+      return `${this.name} is ok`;
+    }
+    else if (this.hp == this.attributes.hp) {
+      return `${this.name} is at full health`;
     }
   }
 

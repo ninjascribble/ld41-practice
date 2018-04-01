@@ -4,7 +4,7 @@ var CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   context: path.join(__dirname, 'src'),
-  entry: './scripts/index',
+  entry: ['babel-polyfill', './scripts/index'],
   devtool: 'source-map',
   output: {
     path: path.join(__dirname, 'build'),
