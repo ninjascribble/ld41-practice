@@ -15,6 +15,21 @@ export default class Fight {
     const dmg = Math.max(0, atk - (def + evd));
 
     this.target.takeDamage(dmg);
-    return `${this.target.name} took ${dmg} points of damage!`;
+
+    if (this.target.hp <= 0) {
+      return `SMAAAAAAAAAAAAASH!`;
+    }
+    else if (dmg > 0) {
+      return `${this.target.name} took ${dmg} point${ dmg > 1 ? 's' : '' } of damage!`;
+    }
+    else if (def > evd) {
+      return `${this.target.name} shrugged it off`;
+    }
+    else if (evd > def) {
+      return `${this.target.name} dodged the attack`;
+    }
+    else {
+      return `${this.actor.name} couldn't even touch ${this.target.name}!`;
+    }
   }
 }
