@@ -18,7 +18,8 @@ export default class Gameplay extends GameState {
     this.turnManager = this.nextActor();
 
     console.clear();
-    this.next();
+
+    game.time.events.add(1000, () => this.next());
   }
 
   * nextActor() {
@@ -43,12 +44,12 @@ export default class Gameplay extends GameState {
     const actor = this.turnManager.next().value;
     const action = actor.nextAction();
 
-    console.log(action.description);
+    console.group(action.description);
 
     const result = action.perform();
 
     console.log(result);
-    console.log(action.target.status());
+    console.groupEnd();
 
     game.time.events.add(1000, () => this.next());
   }

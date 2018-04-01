@@ -5,6 +5,6 @@ export default class Command {
   }
 
   createAction(actor, target) {
-    return new this.actionClass(actor, target, this);
+    return new this.actionClass(actor, target);
   }
 }
