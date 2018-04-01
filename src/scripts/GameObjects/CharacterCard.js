@@ -14,8 +14,8 @@ export default class CharacterCard extends Phaser.Group {
     const hpLabel = DisplayObjects.bodyFont(game, 'HP', 6, 29);
     const spLabel = DisplayObjects.bodyFont(game, 'SP', 6, 45);
 
-    this.hp = DisplayObjects.bodyFont(game, character.attributes.hp, 26, 29);
-    this.sp = DisplayObjects.bodyFont(game, character.attributes.sp, 26, 45);
+    this.hp = DisplayObjects.bodyFont(game, character.hp, 26, 29);
+    this.sp = DisplayObjects.bodyFont(game, character.sp, 26, 45);
 
     name.maxWidth = 60;
 
@@ -28,7 +28,7 @@ export default class CharacterCard extends Phaser.Group {
   }
 
   update () {
-    this.hp.text = this.character.attributes.hp;
-    this.sp.text = this.character.attributes.sp;
+    this.hp.text = this.character.hp;
+    this.sp.text = this.character.sp;
   }
 }
