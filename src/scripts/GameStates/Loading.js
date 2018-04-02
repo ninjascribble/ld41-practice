@@ -1,6 +1,5 @@
 import GameState from './GameState';
 import DisplayObjects from '../DisplayObjects';
-import GameObjects from '../GameObjects';
 
 export default class Loading extends GameState {
   init () {
@@ -23,7 +22,6 @@ export default class Loading extends GameState {
 
   preload () {
     DisplayObjects.load(this);
-    GameObjects.load(this);
   }
 
   // create() is automagically triggerd after preload completes

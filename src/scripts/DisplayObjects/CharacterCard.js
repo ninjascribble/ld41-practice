@@ -1,4 +1,4 @@
-import DisplayObjects from '../DisplayObjects';
+import DisplayObjectFactory from './index';
 
 export default class CharacterCard extends Phaser.Group {
   constructor (game, x, y, bkg, character) {
@@ -10,12 +10,12 @@ export default class CharacterCard extends Phaser.Group {
     bkg.x = 0;
     bkg.y = 0;
 
-    const name = DisplayObjects.bodyFont(game, character.name, 35, 14, 'center');
-    const hpLabel = DisplayObjects.bodyFont(game, 'HP', 6, 29);
-    const spLabel = DisplayObjects.bodyFont(game, 'SP', 6, 45);
+    const name = DisplayObjectFactory.bodyFont(game, character.name, 35, 14, 'center');
+    const hpLabel = DisplayObjectFactory.bodyFont(game, 'HP', 6, 29);
+    const spLabel = DisplayObjectFactory.bodyFont(game, 'SP', 6, 45);
 
-    this.hp = DisplayObjects.bodyFont(game, character.hp, 26, 29);
-    this.sp = DisplayObjects.bodyFont(game, character.sp, 26, 45);
+    this.hp = DisplayObjectFactory.bodyFont(game, character.hp, 26, 29);
+    this.sp = DisplayObjectFactory.bodyFont(game, character.sp, 26, 45);
 
     name.maxWidth = 60;
 
