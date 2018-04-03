@@ -1,3 +1,5 @@
+import Statuses from '../Enums/Statuses';
+
 export default class Character {
   constructor(name, attributes = {}) {
     this.name = name;
@@ -7,24 +9,21 @@ export default class Character {
     this.reset();
   }
 
+  get status() {
+    if (this.hp < 1) {
+      return Statuses.DEAD;
+    }
+    else if (this.hp <= this.attributes.hp / 2) {
+      return Statuses.HURT;
+    }
+    else {
+      return Statuses.OKAY;
+    }
+  }
+
   reset() {
     this.hp = this.attributes.hp;
     this.sp = this.attributes.sp;
-  }
-
-  status() {
-    if (this.hp < 1) {
-      return `${this.name} is dead`;
-    }
-    else if (this.hp <= this.attributes.hp / 2) {
-      return `${this.name} is hurting`;
-    }
-    else if (this.hp > this.attributes.hp / 2) {
-      return `${this.name} is ok`;
-    }
-    else if (this.hp == this.attributes.hp) {
-      return `${this.name} is at full health`;
-    }
   }
 
   nextAction() {
