@@ -1,8 +1,7 @@
-import GameState from './GameState';
 import DisplayObjects from '../DisplayObjects';
 import Characters from '../Characters';
 
-export default class Gameplay extends GameState {
+export default class Gameplay extends Phaser.State {
   create () {
     this.stage.backgroundColor = '#223344';
     this.knight = Characters.knight('Horace');

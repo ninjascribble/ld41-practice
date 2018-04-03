@@ -1,7 +1,7 @@
-import GameState from './GameState';
 import DisplayObjects from '../DisplayObjects';
+import GameStateFactory from './index';
 
-export default class Loading extends GameState {
+export default class Loading extends Phaser.State {
   init () {
     // Pixel-perfect canvas scaling!
     // Thanks to http://www.belenalbeza.com/retro-crisp-pixel-art-in-phaser/
@@ -26,6 +26,6 @@ export default class Loading extends GameState {
 
   // create() is automagically triggerd after preload completes
   create () {
-    this.stateProvider.gameplay(this.state);
+    GameStateFactory.gameplay(this.state);
   }
 }

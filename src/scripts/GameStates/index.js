@@ -1,28 +1,19 @@
 import Gameplay from './Gameplay';
 import Loading from './Loading';
 
-module.exports = {
-  loading: function loading (stateManager) {
-    changeState(stateManager, Loading);
+export default {
+  loading: function loading (game) {
+    changeState(game, Loading);
   },
 
-  gameplay: function gameplay (stateManager) {
-    changeState(stateManager, Gameplay);
+  gameplay: function gameplay (game) {
+    changeState(game, Gameplay);
   }
 };
 
-/**
- * This weird little work-around is here because I wasn't able to import
- * index.js into files in the same directory. Injecting the module via
- * each state's constructor felt OKAY, but I'd love to understand more.
- */
-function createState (state) {
-  return new state(module.exports);
-}
-
-function changeState (stateManager, state) {
-  if (stateManager.checkState(state.name) != true) {
-    stateManager.add(state.name, createState(state));
+function changeState (game, state) {
+  if (game.checkState(state.name) != true) {
+    game.add(state.name, new state());
   }
-  stateManager.start(state.name);
+  game.start(state.name);
 }
