@@ -1,11 +1,14 @@
 import Statuses from '../Enums/Statuses';
+import TargetManager from '../Behaviors/TargetManager';
 
 export default class Character {
   constructor(name, attributes = {}) {
     this.name = name;
     this.attributes = attributes;
     this.commands = [];
+    this.allies = [];
     this.enemies = [];
+    this.targets = new TargetManager(this);
     this.reset();
   }
 
@@ -28,8 +31,8 @@ export default class Character {
 
   nextAction() {
     const actor = this;
-    const target = this.enemies[0];
-    const action = this.commands[0].createAction(actor, target);
+    const target = this.targets.enemies().alive().any;
+    const action = this.commands[0].createAction(actor, this.targets);
     const description = action.message;
     const perform = action.perform;
 
