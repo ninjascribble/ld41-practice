@@ -22,10 +22,10 @@ module.exports = {
       hp: 7,
       sp: 3,
       str: 5,
-      con: 8,
+      con: 6,
       dex: 12,
       int: 16,
-      wis: 10,
+      wis: 12,
       cha: 9
     });
     result.commands.push(Commands.magicMissile());

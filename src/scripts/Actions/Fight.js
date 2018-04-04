@@ -11,7 +11,7 @@ export default class Fight {
   perform() {
     const atk = Math.floor(this.actor.attributes.str / 2 * (Math.random() + 1));
     const def = Math.floor(this.target.attributes.con / 2);
-    const evd = Math.floor(this.actor.attributes.dex / 4 * (Math.random() + 1));
+    const evd = Math.floor(this.target.attributes.dex / 4 * (Math.random() + 1));
     const dmg = Math.max(0, atk - (def + evd));
 
     this.target.takeDamage(dmg);
