@@ -1,7 +1,7 @@
 import Statuses from '../Enums/Statuses';
 import TargetManager from '../Behaviors/TargetManager';
 
-export default class Character {
+export default class Actor {
   constructor(name, attributes = {}) {
     this.name = name;
     this.attributes = attributes;

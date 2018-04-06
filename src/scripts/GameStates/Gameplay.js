@@ -1,11 +1,11 @@
 import DisplayObjects from '../DisplayObjects';
-import Characters from '../Characters';
+import Actors from '../Actors';
 
 export default class Gameplay extends Phaser.State {
   create () {
     this.stage.backgroundColor = '#223344';
-    this.knight = Characters.knight('Horace');
-    this.wizard = Characters.wizard('Ridcully');
+    this.knight = Actors.knight('Horace');
+    this.wizard = Actors.wizard('Ridcully');
     this.knightCard = DisplayObjects.characterCard(game, 5, 5, this.knight);
     this.wizardCard = DisplayObjects.characterCard(game, 244, 5, this.wizard);
     this.add.existing(this.knightCard);

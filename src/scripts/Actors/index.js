@@ -1,9 +1,9 @@
-import Character from './Character';
+import Actor from './Actor';
 import Commands from '../Commands';
 
 module.exports = {
   knight: function knight (name) {
-    let result = new Character(name, {
+    let result = new Actor(name, {
       hp: 10,
       sp: 0,
       str: 11,
@@ -18,7 +18,7 @@ module.exports = {
   },
 
   wizard: function wizard (name) {
-    let result = new Character(name, {
+    let result = new Actor(name, {
       hp: 7,
       sp: 3,
       str: 5,
