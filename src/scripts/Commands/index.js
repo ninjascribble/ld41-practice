@@ -1,6 +1,6 @@
 import Command from './Command';
 import Fight from '../Actions/Fight';
-import MagicMissile from '../Actions/Spells/MagicMissile';
+import MagicMissile from '../Actions/MagicMissile';
 
 module.exports = {
   fight: function fight () {
