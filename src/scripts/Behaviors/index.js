@@ -1,12 +1,11 @@
-import Knightly from './Knightly';
-import Wizardly from './Wizardly';
+import Behavior from './Behavior';
 
 module.exports = {
   knightly: function knightly (actor) {
-    return new Knightly(actor);
+    return new Behavior(actor);
   },
 
   wizardly: function wizardly (actor) {
-    return new Wizardly(actor);
+    return new Behavior(actor);
   }
 };

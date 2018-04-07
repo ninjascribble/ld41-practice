@@ -1,3 +1,0 @@
-import Behavior from './Behavior';
-
-export default class Wizardly extends Behavior {}
