@@ -12,7 +12,7 @@ export default class Behavior {
     return new TargetReducer(this.actor, this.allies, this.enemies);
   }
 
-  nextAction () {
+  next () {
     const target = this.targets.enemies().alive().any;
     const command = this.commands.find(command => command.actorMeetsRequirements(this.actor));
 
