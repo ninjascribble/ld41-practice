@@ -8,6 +8,10 @@ export default class Actor {
     this.reset();
   }
 
+  get alive () {
+    return this.status != Statuses.DEAD;
+  }
+
   get status () {
     if (this.hp < 1) {
       return Statuses.DEAD;

@@ -24,7 +24,7 @@ export default class TargetReducer {
 
   get any () {
     const targets = this._finalize();
-    const index = targets.length > 2 ? 0 : Math.floor(Math.random() * targets.length);
+    const index = Math.floor(Math.random() * targets.length);
 
     return targets[index] || null;
   }
