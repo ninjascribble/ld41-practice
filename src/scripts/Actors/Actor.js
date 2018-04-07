@@ -9,6 +9,7 @@ export default class Actor {
     this.allies = [];
     this.enemies = [];
     this.targets = new TargetManager(this);
+    this.behavior = null;
     this.reset();
   }
 
@@ -28,13 +29,7 @@ export default class Actor {
   }
 
   nextAction () {
-    const actor = this;
-    const target = this.targets.enemies().alive().any;
-    const action = this.commands[0].createAction(actor, this.targets);
-    const description = action.message;
-    const perform = action.perform;
-
-    return { actor, target, description, perform };
+    return this.behavior.perform();
   }
 
   takeDamage (amount = 0) {

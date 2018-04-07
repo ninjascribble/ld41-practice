@@ -1,5 +1,6 @@
 import Actor from './Actor';
 import Commands from '../Commands';
+import Behaviors from '../Behaviors';
 
 module.exports = {
   knight: function knight (name) {
@@ -14,6 +15,7 @@ module.exports = {
       cha: 11
     });
     result.commands.push(Commands.fight());
+    result.behavior = Behaviors.knightly(result);
     return result;
   },
 
@@ -30,6 +32,7 @@ module.exports = {
     });
     result.commands.push(Commands.magicMissile());
     result.commands.push(Commands.fight());
+    result.behavior = Behaviors.wizardly(result);
     return result;
   }
 };
