@@ -11,8 +11,8 @@ export default class Gameplay extends Phaser.State {
     this.add.existing(this.knightCard);
     this.add.existing(this.wizardCard);
 
-    this.knight.enemies.push(this.wizard);
-    this.wizard.enemies.push(this.knight);
+    this.knight.behavior.enemies.push(this.wizard);
+    this.wizard.behavior.enemies.push(this.knight);
     this.turnManager = this.nextActor();
 
     console.clear();
@@ -40,9 +40,9 @@ export default class Gameplay extends Phaser.State {
     }
 
     const actor = this.turnManager.next().value;
-    const action = actor.nextAction();
+    const action = actor.behavior.nextAction();
 
-    console.group(action.description);
+    console.group(action.message);
 
     const result = action.perform();
 

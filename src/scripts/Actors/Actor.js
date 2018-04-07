@@ -1,14 +1,9 @@
 import Statuses from '../Enums/Statuses';
-import TargetManager from '../Behaviors/TargetManager';
 
 export default class Actor {
   constructor (name, attributes = {}) {
     this.name = name;
     this.attributes = attributes;
-    this.commands = [];
-    this.allies = [];
-    this.enemies = [];
-    this.targets = new TargetManager(this);
     this.behavior = null;
     this.reset();
   }
@@ -26,10 +21,6 @@ export default class Actor {
   reset () {
     this.hp = this.attributes.hp;
     this.sp = this.attributes.sp;
-  }
-
-  nextAction () {
-    return this.behavior.perform();
   }
 
   takeDamage (amount = 0) {

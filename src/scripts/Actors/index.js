@@ -14,8 +14,8 @@ module.exports = {
       wis: 8,
       cha: 11
     });
-    result.commands.push(Commands.fight());
     result.behavior = Behaviors.knightly(result);
+    result.behavior.commands.push(Commands.fight());
     return result;
   },
 
@@ -30,9 +30,9 @@ module.exports = {
       wis: 12,
       cha: 9
     });
-    result.commands.push(Commands.magicMissile());
-    result.commands.push(Commands.fight());
     result.behavior = Behaviors.wizardly(result);
+    result.behavior.commands.push(Commands.magicMissile());
+    result.behavior.commands.push(Commands.fight());
     return result;
   }
 };

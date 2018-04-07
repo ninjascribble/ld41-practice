@@ -1,6 +1,6 @@
 Action
 --
-Actions describe the effects of having done something. They calculate and apply those effects to given targets, but they do not specify the cost of doing so or any other criteria. This makes it easier to execute an action in many contexcts, e.g. a Fire spell could be the effect of a spell command that costs 2 SP, or an item that is consumed when used. It could even be the result of a field condition -- the point is it doesn't really matter, and the effects are the same regardless.
+Actions describe the effects of having done something. They calculate and apply those effects to given targets, but they do not specify the cost of doing so or any other criteria. This makes it easier to execute an action in many contexts, e.g. a Fire spell could be the effect of a spell command that costs 2 SP, or an item that is consumed when used. It could even be the result of a field condition -- the point is it doesn't really matter, and the effects are the same regardless.
 
 Command
 --

@@ -1,13 +1,15 @@
 import Statuses from '../Enums/Statuses';
 
-export default class TargetManager {
-  constructor (actor) {
-    this.actor = actor;
+export default class TargetReducer {
+  constructor (actor, allies, enemies) {
+    this._actor = actor;
+    this._allies = allies;
+    this._enemies = enemies;
     this.filters = [];
   }
 
   _finalize () {
-    const targets = [].concat(this.actor, this.actor.allies, this.actor.enemies);
+    const targets = [].concat(this._actor, this._allies, this._enemies);
     const reducer = (targets, func) => targets.filter(func);
     const result = this.filters.reduce(reducer, targets);
 
@@ -33,15 +35,15 @@ export default class TargetManager {
   }
 
   self () {
-    return this._chain(target => target === this.actor);
+    return this._chain(target => target === this._actor);
   }
 
   allies () {
-    return this._chain(target => this.actor.allies.includes(target));
+    return this._chain(target => this._allies.includes(target));
   }
 
   enemies () {
-    return this._chain(target => this.actor.enemies.includes(target));
+    return this._chain(target => this._enemies.includes(target));
   }
 
   alive () {
