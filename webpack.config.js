@@ -14,6 +14,7 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
+      exclude: /node_modules/,
       loader: 'babel?presets[]=es2015'
     }]
   },
@@ -22,7 +23,7 @@ module.exports = {
     new CopyPlugin([
       { from: 'static' },
       { from: 'assets' },
-      { from: '../node_modules/phaser/build' }
+      { from: '../node_modules/phaser/build/phaser.min.js' }
     ])
   ]
 };
