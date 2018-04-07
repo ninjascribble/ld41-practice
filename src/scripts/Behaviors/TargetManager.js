@@ -1,12 +1,12 @@
 import Statuses from '../Enums/Statuses';
 
 export default class TargetManager {
-  constructor(actor) {
+  constructor (actor) {
     this.actor = actor;
     this.filters = [];
   }
 
-  _finalize() {
+  _finalize () {
     const targets = [].concat(this.actor, this.actor.allies, this.actor.enemies);
     const reducer = (targets, func) => targets.filter(func);
     const result = this.filters.reduce(reducer, targets);
@@ -16,47 +16,47 @@ export default class TargetManager {
     return result;
   }
 
-  get all() {
+  get all () {
     return this._finalize();
   }
 
-  get any() {
+  get any () {
     const targets = this._finalize();
     const index = targets.length > 2 ? 0 : Math.floor(Math.random() * targets.length);
 
     return targets[index] || null;
   }
 
-  _chain(filter) {
+  _chain (filter) {
     this.filters.push(filter);
     return this;
   }
 
-  self() {
+  self () {
     return this._chain(target => target === this.actor);
   }
 
-  allies() {
+  allies () {
     return this._chain(target => this.actor.allies.includes(target));
   }
 
-  enemies() {
+  enemies () {
     return this._chain(target => this.actor.enemies.includes(target));
   }
 
-  alive() {
+  alive () {
     return this._chain(target => target.status !== Statuses.DEAD);
   }
 
-  okay() {
+  okay () {
     return this._chain(target => target.status === Statuses.OKAY);
   }
 
-  hurt() {
+  hurt () {
     return this._chain(target => target.status === Statuses.HURT);
   }
 
-  dead() {
+  dead () {
     return this._chain(target => target.status === Statuses.DEAD);
   }
 }

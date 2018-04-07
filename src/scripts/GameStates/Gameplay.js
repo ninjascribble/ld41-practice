@@ -20,22 +20,22 @@ export default class Gameplay extends Phaser.State {
     game.time.events.add(1000, () => this.next());
   }
 
-  * nextActor() {
+  * nextActor () {
     let actors = [this.knight, this.wizard];
     let index = Math.floor(Math.random() * 2);
 
-    while(true) {
+    while (true) {
       index = index ? 0 : 1;
       yield actors[index];
     }
   }
 
-  next() {
+  next () {
     if (this.knight.hp <= 0 || this.wizard.hp <= 0) {
       const loser = this.knight.hp <= 0 ? this.knight : this.wizard;
       const winner = loser == this.knight ? this.wizard : this.knight;
-      console.log(`%c${loser.name} is dead`, 'color:red')
-      console.log(`%c${winner.name} wins!`, 'color:goldenrod')
+      console.log(`%c${loser.name} is dead`, 'color:red');
+      console.log(`%c${winner.name} wins!`, 'color:goldenrod');
       return;
     }
 

@@ -2,7 +2,7 @@ import Statuses from '../Enums/Statuses';
 import TargetManager from '../Behaviors/TargetManager';
 
 export default class Actor {
-  constructor(name, attributes = {}) {
+  constructor (name, attributes = {}) {
     this.name = name;
     this.attributes = attributes;
     this.commands = [];
@@ -12,24 +12,22 @@ export default class Actor {
     this.reset();
   }
 
-  get status() {
+  get status () {
     if (this.hp < 1) {
       return Statuses.DEAD;
-    }
-    else if (this.hp <= this.attributes.hp / 2) {
+    } else if (this.hp <= this.attributes.hp / 2) {
       return Statuses.HURT;
-    }
-    else {
+    } else {
       return Statuses.OKAY;
     }
   }
 
-  reset() {
+  reset () {
     this.hp = this.attributes.hp;
     this.sp = this.attributes.sp;
   }
 
-  nextAction() {
+  nextAction () {
     const actor = this;
     const target = this.targets.enemies().alive().any;
     const action = this.commands[0].createAction(actor, this.targets);
@@ -39,12 +37,12 @@ export default class Actor {
     return { actor, target, description, perform };
   }
 
-  takeDamage(amount = 0) {
+  takeDamage (amount = 0) {
     const targetHp = this.hp - amount;
     this.hp = targetHp > 0 ? targetHp : 0;
   }
 
-  takeSkillPoints(amount = 0) {
+  takeSkillPoints (amount = 0) {
     const targetSp = this.sp - amount;
     this.sp = targetSp > 0 ? targetSp : 0;
   }

@@ -1,10 +1,10 @@
 export default class Command {
-  constructor(name, actionClass) {
+  constructor (name, actionClass) {
     this.name = name;
     this.actionClass = actionClass;
   }
 
-  createAction(actor, target) {
+  createAction (actor, target) {
     return new this.actionClass(actor, target);
   }
 }

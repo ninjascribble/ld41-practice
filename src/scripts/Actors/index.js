@@ -32,4 +32,4 @@ module.exports = {
     result.commands.push(Commands.fight());
     return result;
   }
-}
+};

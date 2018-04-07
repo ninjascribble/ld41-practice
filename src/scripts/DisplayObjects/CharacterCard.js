@@ -35,15 +35,13 @@ export default class CharacterCard extends Phaser.Group {
       this.hp.tint = 0x444444;
       this.sp.tint = 0x444444;
       this.name.tint = 0x444444;
-    }
-    else if (this.character.status == Statuses.HURT) {
+    } else if (this.character.status == Statuses.HURT) {
       this.hpLabel.tint = 0xDAA520;
       this.spLabel.tint = 0xDAA520;
       this.hp.tint = 0xDAA520;
       this.sp.tint = 0xDAA520;
       this.name.tint = 0xDAA520;
-    }
-    else if (this.character.status == Statuses.OKAY) {
+    } else if (this.character.status == Statuses.OKAY) {
       this.hpLabel.tint = 0xFFFFFF;
       this.spLabel.tint = 0xFFFFFF;
       this.hp.tint = 0xFFFFFF;
