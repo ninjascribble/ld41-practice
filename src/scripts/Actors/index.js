@@ -4,7 +4,7 @@ import Behaviors from '../Behaviors';
 
 module.exports = {
   knight: function knight (name) {
-    let result = new Actor(name, {
+    let actor = new Actor(name, {
       hp: 10,
       sp: 0,
       str: 11,
@@ -14,13 +14,13 @@ module.exports = {
       wis: 8,
       cha: 11
     });
-    result.behavior = Behaviors.knightly(result);
-    result.behavior.commands.push(Commands.fight());
-    return result;
+    actor.behavior = Behaviors.knightly(actor);
+    actor.behavior.commands.push(Commands.fight());
+    return actor;
   },
 
   wizard: function wizard (name) {
-    let result = new Actor(name, {
+    let actor = new Actor(name, {
       hp: 7,
       sp: 3,
       str: 5,
@@ -30,9 +30,9 @@ module.exports = {
       wis: 12,
       cha: 9
     });
-    result.behavior = Behaviors.wizardly(result);
-    result.behavior.commands.push(Commands.magicMissile());
-    result.behavior.commands.push(Commands.fight());
-    return result;
+    actor.behavior = Behaviors.wizardly(actor);
+    actor.behavior.commands.push(Commands.magicMissile());
+    actor.behavior.commands.push(Commands.fight());
+    return actor;
   }
 };
