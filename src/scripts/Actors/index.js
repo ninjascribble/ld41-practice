@@ -31,6 +31,7 @@ module.exports = {
       cha: 9
     });
     actor.behavior = Behaviors.wizardly(actor);
+    actor.behavior.commands.push(Commands.heal());
     actor.behavior.commands.push(Commands.magicMissile());
     actor.behavior.commands.push(Commands.fight());
     return actor;

@@ -28,12 +28,14 @@ export default class Actor {
   }
 
   takeDamage (amount = 0) {
-    const targetHp = this.hp - amount;
-    this.hp = targetHp > 0 ? targetHp : 0;
+    this.hp = Math.max(this.hp - amount, 0);
+  }
+
+  healDamage (amount = 0) {
+    this.hp = Math.min(this.hp + amount, this.attributes.hp);
   }
 
   takeSkillPoints (amount = 0) {
-    const targetSp = this.sp - amount;
-    this.sp = targetSp > 0 ? targetSp : 0;
+    this.sp = Math.max(this.sp - amount, 0);
   }
 }
