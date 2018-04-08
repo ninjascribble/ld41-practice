@@ -1,10 +1,11 @@
 import Statuses from '../Enums/Statuses';
+import Behavior from '../Behaviors/Behavior';
 
 export default class Actor {
   constructor (name, attributes = {}) {
     this.name = name;
     this.attributes = attributes;
-    this.behavior = null;
+    this.behavior = new Behavior(this);
     this.reset();
   }
 

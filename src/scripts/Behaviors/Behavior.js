@@ -6,6 +6,7 @@ export default class Behavior {
     this.allies = [];
     this.enemies = [];
     this.commands = [];
+    this.behaviors = [];
   }
 
   get targets () {
@@ -13,41 +14,10 @@ export default class Behavior {
   }
 
   next () {
-    const decision = this.healSelf() || this.healAllies() || this.attackEnemies();
+    const decision = this.behaviors.reduce((result, behavior) => {
+      return result || behavior(this.actor, this.targets, this.commands);
+    }, null);
 
     return decision.command.createAction(this.actor, decision.target);
-  }
-
-  healSelf () {
-    const target = this.targets.self().hurt().any;
-    const command = this.commands.find((command) => {
-      return command.name == 'Heal' && command.actorMeetsRequirements(this.actor);
-    });
-
-    if (target && command) {
-      return { target, command };
-    }
-  }
-
-  healAllies () {
-    const target = this.targets.allies().hurt().any;
-    const command = this.commands.find((command) => {
-      return command.name == 'Heal' && command.actorMeetsRequirements(this.actor);
-    });
-
-    if (target && command) {
-      return { target, command };
-    }
-  }
-
-  attackEnemies () {
-    const target = this.targets.enemies().alive().any;
-    const command = this.commands.find((command) => {
-      return command.name != 'Heal' && command.actorMeetsRequirements(this.actor);
-    });
-
-    if (target && command) {
-      return { target, command };
-    }
   }
 }

@@ -10,34 +10,34 @@ export default class Gameplay extends Phaser.State {
     this.stage.backgroundColor = '#223344';
 
     // Create the parties
-    this.knights = Parties.party(
+    this.teamA = Parties.party(
       Actors.knight('Vimes'),
-      Actors.knight('Carrot'),
-      Actors.knight('Angua')
+      Actors.palladin('Carrot'),
+      Actors.barbarian('Angua')
     );
 
-    this.wizards = Parties.party(
+    this.teamB = Parties.party(
       Actors.wizard('Weatherwax'),
-      Actors.wizard('Ogg'),
+      Actors.cleric('Ogg'),
       Actors.wizard('Magrat')
     );
 
     // Create the battlefield
-    this.knights.members.forEach((knight, i) => {
-      knight.behavior.allies.push(...this.knights.members.filter(ally => ally != knight));
-      knight.behavior.enemies.push(...this.wizards.members);
+    this.teamA.members.forEach((knight, i) => {
+      knight.behavior.allies.push(...this.teamA.members.filter(ally => ally != knight));
+      knight.behavior.enemies.push(...this.teamB.members);
       DisplayObjects.characterCard(game, 5, (i * 80 + 10 * i) + 5, knight);
     });
 
-    this.wizards.members.forEach((wizard, i) => {
-      wizard.behavior.allies.push(...this.wizards.members.filter(ally => ally != wizard));
-      wizard.behavior.enemies.push(...this.knights.members);
+    this.teamB.members.forEach((wizard, i) => {
+      wizard.behavior.allies.push(...this.teamB.members.filter(ally => ally != wizard));
+      wizard.behavior.enemies.push(...this.teamA.members);
       DisplayObjects.characterCard(game, 244, (i * 80 + 10 * i) + 5, wizard);
     });
 
     this.turnManager = new TurnManager([].concat(
-      this.knights.members,
-      this.wizards.members
+      this.teamA.members,
+      this.teamB.members
     ));
 
     // TODO: Replace browser console with in-game console
@@ -60,7 +60,7 @@ export default class Gameplay extends Phaser.State {
     this.logger.log(result);
     this.logger.groupEnd();
 
-    if (!this.knights.alive || !this.wizards.alive) {
+    if (!this.teamA.alive || !this.teamB.alive) {
       this.gameOver();
     } else {
       this.resume();
@@ -68,8 +68,8 @@ export default class Gameplay extends Phaser.State {
   }
 
   gameOver () {
-    const loser = this.knights.alive ? 'The Wizards' : 'The Knights';
-    const winner = this.knights.alive ? 'The Knights' : 'The Wizards';
+    const loser = this.teamA.alive ? 'Team A' : 'Team B';
+    const winner = this.teamA.alive ? 'Team B' : 'Team A';
 
     this.logger.log(`%c${loser} are wiped out`, 'color:red');
     this.logger.log(`%c${winner} win!`, 'color:goldenrod');
