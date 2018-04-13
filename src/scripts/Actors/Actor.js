@@ -23,9 +23,29 @@ export default class Actor {
     }
   }
 
+  get allies() {
+    return this.behavior.allies;
+  }
+
+  get enemies() {
+    return this.behavior.enemies;
+  }
+
+  get commands() {
+    return this.behavior.commands;
+  }
+
+  get behaviors() {
+    return this.behavior.behaviors;
+  }
+
   reset () {
     this.hp = this.attributes.hp;
     this.sp = this.attributes.sp;
+  }
+
+  nextAction() {
+    return this.behavior.next();
   }
 
   takeDamage (amount = 0) {

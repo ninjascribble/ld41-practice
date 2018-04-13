@@ -13,10 +13,10 @@ module.exports = {
       int: 8,
       wis: 7
     });
-    actor.behavior.commands.push(Commands.heal());
-    actor.behavior.commands.push(Commands.fight());
-    actor.behavior.behaviors.push(Behaviors.healSelf);
-    actor.behavior.behaviors.push(Behaviors.attackEnemies);
+    actor.commands.push(Commands.heal());
+    actor.commands.push(Commands.fight());
+    actor.behaviors.push(Behaviors.healSelf);
+    actor.behaviors.push(Behaviors.attackEnemies);
     return actor;
   },
 
@@ -30,9 +30,9 @@ module.exports = {
       int: 16,
       wis: 12
     });
-    actor.behavior.commands.push(Commands.magicMissile());
-    actor.behavior.commands.push(Commands.fight());
-    actor.behavior.behaviors.push(Behaviors.attackEnemies);
+    actor.commands.push(Commands.magicMissile());
+    actor.commands.push(Commands.fight());
+    actor.behaviors.push(Behaviors.attackEnemies);
     return actor;
   },
 
@@ -46,11 +46,11 @@ module.exports = {
       int: 8,
       wis: 8
     });
-    actor.behavior.commands.push(Commands.heal());
-    actor.behavior.commands.push(Commands.fight());
-    actor.behavior.behaviors.push(Behaviors.healAllies);
-    actor.behavior.behaviors.push(Behaviors.healSelf);
-    actor.behavior.behaviors.push(Behaviors.attackEnemies);
+    actor.commands.push(Commands.heal());
+    actor.commands.push(Commands.fight());
+    actor.behaviors.push(Behaviors.healAllies);
+    actor.behaviors.push(Behaviors.healSelf);
+    actor.behaviors.push(Behaviors.attackEnemies);
     return actor;
   },
 
@@ -64,11 +64,11 @@ module.exports = {
       int: 11,
       wis: 13
     });
-    actor.behavior.commands.push(Commands.heal());
-    actor.behavior.commands.push(Commands.fight());
-    actor.behavior.behaviors.push(Behaviors.healSelf);
-    actor.behavior.behaviors.push(Behaviors.healAllies);
-    actor.behavior.behaviors.push(Behaviors.attackEnemies);
+    actor.commands.push(Commands.heal());
+    actor.commands.push(Commands.fight());
+    actor.behaviors.push(Behaviors.healSelf);
+    actor.behaviors.push(Behaviors.healAllies);
+    actor.behaviors.push(Behaviors.attackEnemies);
     return actor;
   },
 
@@ -82,11 +82,11 @@ module.exports = {
       int: 8,
       wis: 8
     });
-    actor.behavior.commands.push(Commands.heal());
-    actor.behavior.commands.push(Commands.fight());
-    actor.behavior.behaviors.push(Behaviors.healSelf);
-    actor.behavior.behaviors.push(Behaviors.healAllies);
-    actor.behavior.behaviors.push(Behaviors.attackEnemies);
+    actor.commands.push(Commands.heal());
+    actor.commands.push(Commands.fight());
+    actor.behaviors.push(Behaviors.healSelf);
+    actor.behaviors.push(Behaviors.healAllies);
+    actor.behaviors.push(Behaviors.attackEnemies);
     return actor;
   },
 };
