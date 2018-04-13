@@ -68,8 +68,8 @@ export default class Gameplay extends Phaser.State {
   }
 
   gameOver () {
-    const loser = this.teamA.alive ? 'Team A' : 'Team B';
-    const winner = this.teamA.alive ? 'Team B' : 'Team A';
+    const loser = this.teamA.alive ? 'Team B' : 'Team A';
+    const winner = this.teamA.alive ? 'Team A' : 'Team B';
 
     this.logger.log(`%c${loser} are wiped out`, 'color:red');
     this.logger.log(`%c${winner} win!`, 'color:goldenrod');
