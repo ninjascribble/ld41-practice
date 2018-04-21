@@ -9,23 +9,22 @@ export default class Fight {
   }
 
   perform () {
-    const atk = Math.floor(this.actor.attributes.str / 2 * (Math.random() + 1));
-    const def = Math.floor(this.target.attributes.con / 2);
-    const evd = Math.floor(this.target.attributes.dex / 4 * (Math.random() + 1));
-    const dmg = Math.max(0, atk - (def + evd));
+    const hit = this.actor.rollPhysHit();
+    const avd = this.target.rollPhysAvd();
+    const dmg = this.actor.rollPhysDmg() * (.8 + Math.random());
+    const def = this.target.rollPhysDef();
+    const result = (hit < avd) ? 0 : Math.floor(Math.max(0, (dmg - def)));
 
-    this.target.takeDamage(dmg);
+    this.target.takeDamage(result);
 
     if (this.target.hp <= 0) {
       return 'SMAAAAAAAAAAAAASH!';
-    } else if (dmg > 0) {
+    } else if (hit < avd) {
+      return `${this.actor.name} missed`;
+    } else if (result > 0) {
       return `${this.target.name} took ${dmg} point${ dmg > 1 ? 's' : '' } of damage!`;
-    } else if (def > evd) {
-      return `${this.target.name} shrugged it off`;
-    } else if (evd > def) {
-      return `${this.target.name} dodged the attack`;
     } else {
-      return `${this.actor.name} couldn't even touch ${this.target.name}!`;
+      return `${this.actor.name} shrugged it off`;
     }
   }
 }

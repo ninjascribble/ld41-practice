@@ -9,21 +9,20 @@ export default class MagicMissile {
   }
 
   perform () {
-    const atk = Math.floor(this.actor.attributes.int * (Math.random() + .25));
-    const def = Math.floor(this.target.attributes.wis / 2);
-    const evd = Math.floor(this.target.attributes.dex / 4 * (Math.random() + 1));
-    const dmg = Math.max(0, atk - (def + evd));
+    const hit = this.actor.rollMagHit();
+    const avd = this.target.rollMagAvd();
+    const dmg = this.actor.rollMagDmg() * (.8 + Math.random());
+    const def = this.target.rollMagDef();
+    const result = (hit < avd) ? 0 : Math.floor(Math.max(0, (dmg - def)));
 
-    this.target.takeDamage(dmg);
+    this.target.takeDamage(result);
 
     if (this.target.hp <= 0) {
       return `${this.target.name} is completely engulfed in flame!`;
-    } else if (dmg > 0) {
-      return `${this.target.name} took ${dmg} point${ dmg > 1 ? 's' : '' } of damage!`;
-    } else if (def > evd) {
-      return 'The spell was a dud...';
-    } else if (evd > def) {
+    } else if (hit < avd) {
       return `${this.target.name} swiftly dodged away`;
+    } else if (result > 0) {
+      return `${this.target.name} took ${dmg} point${ dmg > 1 ? 's' : '' } of damage!`;
     } else {
       return `${this.target.name} didn't even blink!`;
     }

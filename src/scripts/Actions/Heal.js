@@ -9,17 +9,18 @@ export default class Heal {
   }
 
   perform () {
-    const atk = Math.floor(this.actor.attributes.wis * (Math.random() + .25));
-    const def = 0;
-    const evd = 0;
-    const dmg = Math.max(0, atk - (def + evd));
+    const hit = this.actor.rollMagHit();
+    const avd = this.target.rollMagAvd();
+    const dmg = this.actor.rollMagDmg();
+    const def = this.target.rollMagDef();
+    const result = (hit < avd) ? 0 : Math.max(0, (dmg - def));
 
-    this.target.healDamage(dmg);
+    this.target.healDamage(result);
 
     if (this.target.hp == this.target.attributes.hp) {
       return `${this.target.name} is fully healed!`;
     } else {
-      return `${this.target.name} recovered ${dmg} hp`;
+      return `${this.target.name} recovered ${result} hp`;
     }
   }
 }

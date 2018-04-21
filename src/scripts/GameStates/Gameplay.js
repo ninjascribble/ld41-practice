@@ -24,14 +24,18 @@ export default class Gameplay extends Phaser.State {
 
     // Create the battlefield
     this.teamA.members.forEach((knight, i) => {
+      knight.attributes.level = 50;
       knight.allies.push(...this.teamA.members.filter(ally => ally != knight));
       knight.enemies.push(...this.teamB.members);
+      knight.reset();
       DisplayObjects.characterCard(game, 5, (i * 80 + 10 * i) + 5, knight);
     });
 
     this.teamB.members.forEach((wizard, i) => {
+      wizard.attributes.level = 50;
       wizard.allies.push(...this.teamB.members.filter(ally => ally != wizard));
       wizard.enemies.push(...this.teamA.members);
+      wizard.reset();
       DisplayObjects.characterCard(game, 244, (i * 80 + 10 * i) + 5, wizard);
     });
 
